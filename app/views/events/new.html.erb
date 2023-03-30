@@ -1,5 +1,13 @@
 <h1>Create a new event</h1>
 
+<% if @event.errors.any? %>
+  <div class="errors_container">
+    <% @event.errors.each do |error| %>
+      <p><%= error.full_message %></p>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_with model: @event do |form| %>
   <div class="form-row">
     <%= form.label :date, "Choose a date: " %>
