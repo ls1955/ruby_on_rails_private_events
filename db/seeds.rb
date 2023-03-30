@@ -14,5 +14,5 @@ emails.each do |email|
 end
 
 locations.each_with_index do |location, index|
-  Event.create date: Date.today, location: location, creator_id: index
+  Event.create date: Date.today, location: location, creator_id: index + 1
 end
