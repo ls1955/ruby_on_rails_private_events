@@ -9,6 +9,12 @@
 <ul>
   <% current_user.attended_events.past.each do |event| %>
     <li><%= event %></li>
+
+    <%# TODO: Refactor? %>
+    <% if current_user.id == params[:id].to_i %>
+      <% participation = Participation.find_by(attendee_id: current_user.id, attended_event_id: event.id) %>
+      <%= button_to "Delete attendance", participation_path(participation), method: :delete %>
+    <% end %>
   <% end %>
 </ul>
 
@@ -16,5 +22,10 @@
 <ul>
   <% current_user.attended_events.upcoming.each do |event| %>
     <li><%= event %></li>
+
+    <% if current_user.id == params[:id].to_i %>
+      <% participation = Participation.find_by(attendee_id: current_user.id, attended_event_id: event.id) %>
+      <%= button_to "Delete attendance", participation_path(participation), method: :delete %>
+    <% end %>
   <% end %>
 </ul>
