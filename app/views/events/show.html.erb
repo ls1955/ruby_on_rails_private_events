@@ -2,8 +2,10 @@
 
 <%= render @event %>
 
-<%= button_to "Update", edit_event_path(@event) %>
-<%= button_to "Delete", @event, method: :delete %>
+<% if current_user.id == @event.creator_id %>
+  <%= button_to "Update", edit_event_path(@event) %>
+  <%= button_to "Delete", @event, method: :delete %>
+<% end %>
 
 <h2>Attendees:</h2>
 <ul>
