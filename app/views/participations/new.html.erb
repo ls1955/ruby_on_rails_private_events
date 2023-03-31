@@ -1,1 +1,18 @@
 <h1>Choose an event that you like to attend.</h1>
+
+<% if @participation.errors.any? %>
+  <div class="errors_container">
+    <% @participation.errors.each do |error| %>
+      <p><%= error.full_message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: @participation do |form| %>
+  <div class="form_row">
+    <%= form.label :id, "Available events:" %>
+    <%= form.collection_select :id, Event.order(:id), :id, :detail %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

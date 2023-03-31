@@ -9,12 +9,12 @@
 <% end %>
 
 <%= form_with model: @event do |form| %>
-  <div class="form-row">
+  <div class="form_row">
     <%= form.label :date, "Choose a date: " %>
     <%= form.date_field :date %>
   </div>
 
-  <div class="form-row">
+  <div class="form_row">
     <%= form.label :location, "Type a location: " %>
     <%= form.text_field :location %>
   </div>
