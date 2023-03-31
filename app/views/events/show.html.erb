@@ -1,3 +1,9 @@
 <p>Event details</p>
 
 <%= render @event %>
+<h2>Attendees:</h2>
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee %></li>
+  <% end %>
+</ul>
