@@ -1,3 +1,16 @@
 <h1>Created events</h1>
-
 <%= render @events %>
+
+<h1>Past events:</h1>
+<ul>
+  <% current_user.attended_events.where(date: (...Date.today)).each do |event| %>
+    <li><%= event %></li>
+  <% end %>
+</ul>
+
+<h1>Upcoming events:</h1>
+<ul>
+  <% current_user.attended_events.where(date: (Date.today..)).each do |event| %>
+    <li><%= event %></li>
+  <% end %>
+</ul>
