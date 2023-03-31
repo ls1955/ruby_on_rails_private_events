@@ -1,5 +1,9 @@
 <h1>Created events</h1>
-<%= render @events %>
+
+<% @events.each do |event| %>
+  <%= render event %>
+  <%= link_to "Show Detail", event_path(event) %>
+<% end %>
 
 <h1>Past events:</h1>
 <ul>

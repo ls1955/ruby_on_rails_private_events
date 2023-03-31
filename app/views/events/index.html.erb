@@ -1,3 +1,8 @@
 <h1>Events</h1>
 
-<%= render @events %>
+<% @events.each do |event|%>
+  <div class="container">
+    <%= render event%>
+    <%= link_to "Show Detail", event_path(event) %>
+  </div>
+<% end %>

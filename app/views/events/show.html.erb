@@ -1,6 +1,10 @@
 <p>Event details</p>
 
 <%= render @event %>
+
+<%= button_to "Update", edit_event_path(@event) %>
+<%= button_to "Delete", @event, method: :delete %>
+
 <h2>Attendees:</h2>
 <ul>
   <% if @event.attendees.empty? %>
