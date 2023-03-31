@@ -3,7 +3,11 @@
 <%= render @event %>
 <h2>Attendees:</h2>
 <ul>
-  <% @event.attendees.each do |attendee| %>
-    <li><%= attendee %></li>
+  <% if @event.attendees.empty? %>
+    <li>Its empty.</li>
+  <% else %>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee %></li>
+    <% end %>
   <% end %>
 </ul>
