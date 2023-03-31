@@ -6,15 +6,8 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :location, presence: true
 
-  class << self
-    def past
-      where(date: (...Date.today))
-    end
-
-    def upcoming
-      where(date: (Date.today..))
-    end
-  end
+  scope :past, -> { where(date: (...Date.today)) }
+  scope :upcoming, -> { where(date: (Date.today..)) }
 
   def to_s
     "#{location} at #{date}, created by #{creator}"
