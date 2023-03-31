@@ -6,10 +6,10 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @event = Event.find_by partipation_params
+    @participation = Participation.new participation_params
 
-    if current_user.attended_events << @event
-      redirect_to event_path(@event), notice: "Event has been successfully attend."
+    if @participation.save
+      redirect_to new_participation_path, notice: "User has been successfully invited."
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class ParticipationsController < ApplicationController
 
   private
 
-  def partipation_params
-    params.require(:participation).permit(:id)
+  def participation_params
+    params.require(:participation).permit(:attendee_id, :attended_event_id  )
   end
 end

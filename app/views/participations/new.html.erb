@@ -1,4 +1,4 @@
-<h1>Choose an event that you like to attend.</h1>
+<h1>Invite a user to one of your events.</h1>
 
 <% if @participation.errors.any? %>
   <div class="errors_container">
@@ -8,10 +8,28 @@
   </div>
 <% end %>
 
+<!-- Old form that allow user to attend any event
+
 <%= form_with model: @participation do |form| %>
   <div class="form_row">
     <%= form.label :id, "Available events:" %>
     <%= form.collection_select :id, Event.order(:id), :id, :to_s %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
+-->
+
+<%= form_with model: @participation do |form| %>
+  <div class="form_row">
+    <%= form.label :attended_event_id, "Your events:" %>
+    <%= form.collection_select :attended_event_id, current_user.events, :id, :to_s %>
+  </div>
+
+  <div class="form_row">
+    <%= form.label :attendee_id, "Choose an user to invite:" %>
+    <%= form.collection_select :attendee_id, User.where.not(id: current_user.id), :id, :email %>
   </div>
 
   <%= form.submit %>
