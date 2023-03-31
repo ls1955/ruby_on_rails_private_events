@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :location, presence: true
 
-  def detail
+  def to_s
     "#{location} at #{date}, created by #{creator}"
   end
 end
