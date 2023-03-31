@@ -13,6 +13,9 @@
   <body>
     <div class="nav_bar">
       <%= link_to "Homepage", root_path %>
+      <% if current_user %>
+        <%= link_to "Profile", user_path(current_user) %>
+      <% end %>
       <%= link_to "Create new event", new_event_path %>
       <%= link_to "Attend an event", new_participation_path %>
     </div>
